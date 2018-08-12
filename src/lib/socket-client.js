@@ -1,6 +1,6 @@
 const io = require('socket.io-client');
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
 export default function () {
   const socket = io.connect(`ws://localhost:${PORT}`);
