@@ -1,4 +1,4 @@
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3001;
 
 const server = require('http').createServer();
 const io = require('socket.io')(server);
@@ -41,7 +41,7 @@ io.on('connection', function (client) {
   })
 })
 
-server.listen(PORT, function (err) {
+server.listen(3001, function (err) {
   if (err) throw err
-  console.log(`Listening on port: ${PORT}`);
+  console.log('Listening on port 3001');
 })

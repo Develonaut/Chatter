@@ -1,9 +1,7 @@
-const io = require('socket.io-client');
-
-const PORT = process.env.PORT || 5000;
+const io = require('socket.io-client')
 
 export default function () {
-  const socket = io.connect(`http://localhost:${PORT}`);
+  const socket = io.connect(`http://localhost:3001`);
 
   function registerHandler(onMessageReceived) {
     socket.on('message', onMessageReceived)
