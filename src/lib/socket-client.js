@@ -3,7 +3,7 @@ const io = require('socket.io-client');
 const PORT = process.env.PORT || 5000;
 
 export default function () {
-  const socket = io.connect(`ws://localhost:${PORT}`);
+  const socket = io.connect(`ws://localhost:${PORT+1}`);
 
   function registerHandler(onMessageReceived) {
     socket.on('message', onMessageReceived)
