@@ -1,10 +1,12 @@
 const io = require('socket.io-client');
 
-const PROXY = (process.env.NODE_ENV === 'production') 
+const PROXY = (process.env.NODE_ENV === 'production')
   ? 'https://chatter-react-server.herokuapp.com/'
   : 'http://localhost:5000';
 
 export default function () {
+  console.log(process.env.NODE_ENV);
+  console.log(PROXY);
   const socket = io.connect(PROXY);
 
   function registerHandler(onMessageReceived) {

@@ -14,8 +14,6 @@ class App extends Component {
     this.client.registerHandler(logMessage);
   }
 
-
-
   render() {
     return (
       <div className="App">
