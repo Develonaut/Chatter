@@ -7,7 +7,7 @@ const PROXY = (process.env.NODE_ENV === 'development')
 export default function () {
   console.log(process.env.NODE_ENV);
   console.log(PROXY);
-  const socket = io.connect(PROXY);
+  const socket = io.connect('https://chatter-react-server.herokuapp.com/');
 
   function registerHandler(onMessageReceived) {
     socket.on('message', onMessageReceived)
