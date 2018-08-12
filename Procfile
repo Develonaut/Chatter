@@ -1,0 +1,1 @@
+heroku ps:scale server=1 client=1

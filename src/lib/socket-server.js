@@ -40,7 +40,7 @@ io.on('connection', function (client) {
   })
 })
 
-server.listen(PORT+1, function (err) {
+server.listen(PORT, function (err) {
   if (err) throw err
-  console.log(`Listening on port: ${PORT+1}`);
+  console.log(`Listening on port: ${PORT}`);
 })
