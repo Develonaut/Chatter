@@ -2,7 +2,6 @@
   "name": "chitter",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:5000",
   "dependencies": {
     "concurrently": "^3.6.1",
     "express": "^4.16.3",
@@ -19,9 +18,7 @@
     "socket.io": "^2.1.1"
   },
   "scripts": {
-    "start": "concurrently \"npm run server\" \"react-scripts start\"",
-    "server": "node ./src/lib/socket-server.js",
-    "client": "react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"

@@ -5,13 +5,16 @@ import '../stylesheets/App.css';
 class App extends Component {
   constructor(props) {
     super(props);
+    this.client = socket();
 
-    this.state = {
-      client: socket(),
-    }
+    const logMessage = (data) => {
+      console.log(data);
+    }  
 
-    console.log(this.state);
+    this.client.registerHandler(logMessage);
   }
+
+
 
   render() {
     return (
