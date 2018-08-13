@@ -2,7 +2,7 @@
   "name": "Chatter",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://develonaut.github.io/Chatter",
+  "homepage": "https://develonaut.github.io/chatter",
   "dependencies": {
     "express": "^4.16.3",
     "gh-pages": "^1.2.0",
