@@ -5,4 +5,4 @@ const reducers = combineReducers({
     messages,
 })
 
-export default reducers;
+export default reducers

@@ -1,13 +1,17 @@
 {
-  "name": "chitter",
+  "name": "Chatter",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://develonaut.github.io/Chatter",
   "dependencies": {
-    "concurrently": "^3.6.1",
     "express": "^4.16.3",
+    "gh-pages": "^1.2.0",
     "http": "0.0.0",
+    "node-sass-chokidar": "^1.3.3",
+    "npm-run-all": "^4.1.3",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
+    "react-helmet": "^5.2.0",
     "react-redux": "^5.0.7",
     "react-scripts": "1.1.4",
     "react-snap": "^1.10.1",
@@ -18,9 +22,16 @@
     "socket.io": "^2.1.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
+    "start-js": "react-scripts start",
+    "start": "npm-run-all -p watch-css start-js",
+    "build-js": "react-scripts build",
+    "build": "npm-run-all build-css build-js",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "postbuild": "react-snap"
   }
 }
