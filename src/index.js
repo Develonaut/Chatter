@@ -11,25 +11,32 @@ import { PersistGate } from 'redux-persist/es/integration/react'
 import App from './components/App';
 // Stylesheets
 import './stylesheets/base/normalize.css';
+// React Router
+import { BrowserRouter } from 'react-router-dom';
 
 const { persistor, store } = configureStore();
-const app = (
-  <Provider store={store}>
-      <PersistGate
-      loading={null}
-      onBeforeLift={null}
-      persistor={persistor}
-      >
-          <App />
-      </PersistGate>
-  </Provider>
-)
 
 const rootElement = document.getElementById("root");
 if (rootElement.hasChildNodes()) {
-  hydrate(app, rootElement);
+  hydrate(<BuildApp />, rootElement);
 } else {
-  render(app, rootElement);
+  render(<BuildApp />, rootElement);
 }
 
 registerServiceWorker();
+
+function BuildApp() {
+  return(
+    <Provider store={store}>
+        <PersistGate
+        loading={null}
+        onBeforeLift={null}
+        persistor={persistor}
+        >
+          <BrowserRouter basename="/" >
+            <App />
+          </BrowserRouter>
+        </PersistGate>
+    </Provider>
+  );
+}
