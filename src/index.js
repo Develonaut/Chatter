@@ -33,7 +33,7 @@ function BuildApp() {
         onBeforeLift={null}
         persistor={persistor}
         >
-          <BrowserRouter basename="/" >
+          <BrowserRouter basename="chatter/" >
             <App />
           </BrowserRouter>
         </PersistGate>
