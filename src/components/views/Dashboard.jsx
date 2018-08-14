@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import socket from 'lib/socket-client';
 import requireAuth from 'components/containers/AuthContainer';
+import Nav from 'components/shared/Nav';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -23,6 +24,7 @@ class Dashboard extends Component {
         <header className="dashboard-header">
           <h1 className="dashboard-title">Dashboard</h1>
         </header>
+        <Nav />
       </div>
     );
   }

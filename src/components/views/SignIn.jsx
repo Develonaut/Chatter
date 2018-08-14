@@ -34,10 +34,9 @@ class SignIn extends Component {
   }
 
   render() {
-    const { auth: { id = null } = {} } = this.props;
-    console.log(id);
+    const { user: { id = null } = {} } = this.props;
     if (id) {
-      return <Redirect from={Urls.SIGNIN} to={Urls.DASHBOARD} />
+      return <Redirect to={Urls.DASHBOARD} />
     }
 
     return (
@@ -60,7 +59,7 @@ const mapDispatchToProps = {
 
 function mapStateToProps(state) {
   return {
-    auth: getAuthedUserSelector(state),
+    user: getAuthedUserSelector(state),
   }
 }
 
