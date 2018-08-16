@@ -1,0 +1,14 @@
+.i-button {
+  background: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+
+  &.light {
+    color: white;
+  }
+
+  &.dark {
+    color: black;
+  }
+}
