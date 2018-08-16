@@ -10,7 +10,11 @@ import { PersistGate } from 'redux-persist/es/integration/react'
 // Components
 import App from './components/App';
 // Stylesheets
+<<<<<<< HEAD
 import 'stylesheets/base/normalize.css';
+=======
+import './stylesheets/base/normalize.css';
+>>>>>>> 553820f409f39a2b1edb7c264ca62e6219fd64e4
 // React Router
 import { BrowserRouter } from 'react-router-dom';
 

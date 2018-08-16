@@ -1,16 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
+<<<<<<< HEAD
 import { getAuthedUserSelector, signOut } from 'modules/AuthModule';
+=======
+import { getAuthedUserSelector } from 'modules/AuthModule';
+>>>>>>> 553820f409f39a2b1edb7c264ca62e6219fd64e4
 
 class Nav extends React.Component {
-  handleClick = (event) => {
-    const {
-      signOut: dispatchSignOut,
-    } = this.props;
-    event.preventDefault();
-    dispatchSignOut();
-  }
-
   render() {
     const { user: {
       avatar,
@@ -20,7 +16,6 @@ class Nav extends React.Component {
       <nav>
         {name}
         <img src={avatar} alt={`${name}'s Avatar`}/>
-        <button onClick={this.handleClick}>Sign Out</button>
       </nav>
     );
   }
@@ -32,8 +27,4 @@ function mapStateToProps(state) {
   }
 }
 
-const mapDispatchToProps = {
-  signOut,
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Nav)
+export default connect(mapStateToProps)(Nav)
