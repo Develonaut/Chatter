@@ -4,21 +4,14 @@ import { withRouter, Redirect } from 'react-router';
 import { Urls } from 'conf/urls.js';
 
 export class AuthContainer extends React.Component {
-  componentDidMount() {
-    const {
-      location: {
-        pathname: returnUrl,
-      } = {},
-      authenticated,
-    } = this.props;
-  }
-
   render() {
     const {
       authenticated = false,
       children,
     } = this.props;
     
+    console.log(authenticated);
+
     if (authenticated) {
       return children;
     }

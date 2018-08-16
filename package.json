@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://develonaut.github.io/chatter",
   "dependencies": {
+    "classnames": "^2.2.6",
     "express": "^4.16.3",
     "gh-pages": "^1.2.0",
     "http": "0.0.0",
