@@ -4,15 +4,6 @@ import { withRouter, Redirect } from 'react-router';
 import { Urls } from 'conf/urls.js';
 
 export class AuthContainer extends React.Component {
-  componentDidMount() {
-    const {
-      location: {
-        pathname: returnUrl,
-      } = {},
-      authenticated,
-    } = this.props;
-  }
-
   render() {
     const {
       authenticated = false,
@@ -22,8 +13,7 @@ export class AuthContainer extends React.Component {
     if (authenticated) {
       return children;
     }
-    console.log('redirecting to');
-    console.log(Urls.SIGNIN);
+
     return <Redirect to={Urls.SIGNIN} />;
   }
 }
