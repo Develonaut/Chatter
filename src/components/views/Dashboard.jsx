@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import socket from 'lib/socket-client';
+import Socket from 'components/Socket';
 import requireAuth from 'components/containers/AuthContainer';
 import Nav from 'components/shared/Nav';
-import Socket from 'components/Socket';
+import Chat from 'components/shared/Chat';
 
 class Dashboard extends Component {
   render() {
@@ -16,6 +16,7 @@ class Dashboard extends Component {
             <h1 className="dashboard-title">Dashboard</h1>
           </header>
           <Nav />
+          <Chat />
         </div>
       </Socket>
     );

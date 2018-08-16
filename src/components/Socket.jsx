@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import io from 'socket.io-client';
 
+import { getEventsSelector, storeEvents } from 'modules/EventsModule';
 import { getAuthedUserSelector } from 'modules/AuthModule';
 
 import {
@@ -20,21 +21,40 @@ class Socket extends React.Component {
   }
 
   componentDidMount() {
-    this.socket.on("connected", this.onConnected);
-    this.socket.on("joined", this.onMessage);
-    this.socket.on("message", this.onMessage);
+    const {
+      CONNECTED,
+      JOIN_RESPONSE,
+      MESSAGE_SEND,
+    } = this.props.eventsCapsule || {};
+
+    this.socket.on(CONNECTED, this.onConnected);
+    this.socket.on(JOIN_RESPONSE, this.onMessage);
+    this.socket.on(MESSAGE_SEND, this.onMessage);
   }
 
-  onConnected = (handshake) => {
-    console.log(handshake);
-    this.socket.emit("join", this.props.user);
+  componentWillUnmount() {
+    // If we're unmount be sure to kill all the socket
+    // events.
+    this.socket.removeAllListeners();
+  }
+
+  onConnected = ({ eventsCapsule }) => {
+    const { 
+      storeEvents: dispatchStoreEvents,
+      user,
+    } = this.props;
+
+    console.log(eventsCapsule);
+    dispatchStoreEvents(eventsCapsule);
+    console.log(eventsCapsule.JOIN_REQUEST);
+    this.socket.emit(eventsCapsule.JOIN_REQUEST, user);
   }
 
   onMessage = (message) => {
     const { addMessage: dispatchAddMessage } = this.props;
     console.log(message);
     dispatchAddMessage({
-      body: message
+      body: message,
     });
   }
 
@@ -79,10 +99,12 @@ class Socket extends React.Component {
 function mapStateToProps(state) {
   return {
     user: getAuthedUserSelector(state),
+    eventsCapsule: getEventsSelector(state),
   }
 }
 
 const mapDispatchToProps = {
+  storeEvents,
   addMessage,
 }
 
