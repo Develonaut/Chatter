@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
-import ui from 'modules/UIModule';
-import items from 'modules/ItemsModule';
+import auth from 'modules/AuthModule';
+import messages from 'modules/MessagesModule';
 
 const reducers = combineReducers({
-    ui,
-    items,
-})
+    auth,
+    messages,
+});
 
 export default reducers

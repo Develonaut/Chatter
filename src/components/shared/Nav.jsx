@@ -1,8 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router';
 import { getAuthedUserSelector, signOut } from 'modules/AuthModule';
-import { Urls } from '../../conf/urls';
 
 class Nav extends React.Component {
   handleClick = (event) => {
