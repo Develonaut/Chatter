@@ -38,15 +38,14 @@ class Socket extends React.Component {
     this.socket.removeAllListeners();
   }
 
-  onConnected = ({ eventsCapsule }) => {
+  onConnected = ({ eventsCapsule, message }) => {
     const { 
       storeEvents: dispatchStoreEvents,
       user,
     } = this.props;
 
-    console.log(eventsCapsule);
+    console.log(message);
     dispatchStoreEvents(eventsCapsule);
-    console.log(eventsCapsule.JOIN_REQUEST);
     this.socket.emit(eventsCapsule.JOIN_REQUEST, user);
   }
 
