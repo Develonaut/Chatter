@@ -1,38 +1,42 @@
+// React
 import React from 'react';
 import { hydrate, render } from "react-dom";
-import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/es/integration/react'
-import configureStore from './store/configureStore.js'
 import registerServiceWorker from './registerServiceWorker';
-
+// Redux
+import { Provider } from 'react-redux';
+import configureStore from './store/configureStore'
+// Redux Persist
+import { PersistGate } from 'redux-persist/es/integration/react'
 // Components
-import App from './components/views/App';
-import Loading from './components/views/Loading';
-
-import './stylesheets/base/Normalize.css';
-import './stylesheets/base/fonts/Icons.css';
-import './stylesheets/base/Common.scss';
+import App from './components/App';
+// Stylesheets
+import './stylesheets/base/normalize.css';
+// React Router
+import { BrowserRouter } from 'react-router-dom';
 
 const { persistor, store } = configureStore();
 
-const app = (
-<Provider store={store}>
-    <PersistGate
-        loading={<Loading />}
-        onBeforeLift={null}
-        persistor={persistor}
-    >
-        <App />
-    </PersistGate>
-</Provider>
-);
-
 const rootElement = document.getElementById("root");
 if (rootElement.hasChildNodes()) {
-  hydrate(app, rootElement);
+  hydrate(<BuildApp />, rootElement);
 } else {
-  render(app, rootElement);
+  render(<BuildApp />, rootElement);
 }
 
 registerServiceWorker();
 
+function BuildApp() {
+  return(
+    <Provider store={store}>
+        <PersistGate
+        loading={null}
+        onBeforeLift={null}
+        persistor={persistor}
+        >
+          <BrowserRouter basename="chatter/" >
+            <App />
+          </BrowserRouter>
+        </PersistGate>
+    </Provider>
+  );
+}
