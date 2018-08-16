@@ -7,17 +7,6 @@ import Nav from 'components/shared/Nav';
 import Socket from 'components/Socket';
 
 class Dashboard extends Component {
-  constructor(props) {
-    super(props);
-    this.client = socket();
-
-    const logMessage = (data) => {
-      console.log(data);
-    }
-
-    this.client.registerHandler(logMessage);
-  }
-
   render() {
     return (
       <Socket>
